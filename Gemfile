@@ -79,3 +79,5 @@ gem 'devise-i18n-views'
 
 #画像アップロード
 gem 'carrierwave'
+
+gem 'dotenv-rails'
