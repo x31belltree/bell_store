@@ -1,6 +1,4 @@
 main {
-  height: calc(100vh - 50px);
-  min-height: calc(100vh - 50px);
   padding-top: 60px;
 }
 
@@ -10,4 +8,10 @@ footer {
 
 .bg-home {
   background-color: #5f9ea0;
+}
+
+img {
+max-width: 100%;
+height: auto;
+width /***/:auto;
 }

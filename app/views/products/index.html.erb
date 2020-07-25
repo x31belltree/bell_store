@@ -1,33 +1,33 @@
 <h1>商品一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>商品説明</th>
-      <th>価格</th>
-      <th>カテゴリ</th>
-      <th>画像</th>
-      <th>在庫数</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+              <%= image_tag product.image.to_s  %>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.name %></h5>
+            <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+            <p class="card-text">説明：<%= product.detail %></p>
+            <p class="card-text">価格：<%= product.price %></p>
+            <p class="card-text">種類：<%= product.category %></p>
+            <p class="card-text">在庫：<%= product.stock %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to '詳細', product %></button>
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to '編集', edit_product_path(product) %></button>
+                <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to '削除', product, method: :delete, data: { confirm: '本当に削除しますか?' } %></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.detail %></td>
-        <td><%= product.price %></td>
-        <td><%= product.category %></td>
-        <td><%= image_tag product.image.to_s %></td>
-        <td><%= product.stock %></td>
-        <td><%= link_to '詳細', product %></td>
-        <td><%= link_to '編集', edit_product_path(product) %></td>
-        <td><%= link_to '削除', product, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+
 
 <br>
 
