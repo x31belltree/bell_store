@@ -1,13 +1,13 @@
-<h1>Products</h1>
+<h1>商品一覧</h1>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Detail</th>
-      <th>Price</th>
-      <th>Category</th>
-      <th>Image</th>
-      <th>Stock</th>
+      <th>商品名</th>
+      <th>商品説明</th>
+      <th>価格</th>
+      <th>カテゴリ</th>
+      <th>画像</th>
+      <th>在庫数</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,9 +21,9 @@
         <td><%= product.category %></td>
         <td><%= product.image %></td>
         <td><%= product.stock %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', product %></td>
+        <td><%= link_to '編集', edit_product_path(product) %></td>
+        <td><%= link_to '削除', product, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to '新規登録', new_product_path %>

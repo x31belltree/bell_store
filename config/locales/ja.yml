@@ -1,5 +1,13 @@
 ja:
   activerecord:
+    attributes:
+      product:
+        name: 商品名
+        detail: 商品説明
+        price: 価格
+        category: カテゴリ
+        image: 画像
+        stock: 在庫数
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
