@@ -72,3 +72,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 gem 'rails-i18n', '~> 5.1' 
+
+#devise 日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'
