@@ -1,5 +1,6 @@
 main {
   padding-top: 60px;
+  min-height: calc(100vh - 50px);
 }
 
 footer {
@@ -11,7 +12,11 @@ footer {
 }
 
 img {
-max-width: 100%;
-height: auto;
-width /***/:auto;
+  max-width: 100%;
+  height: auto;
+  width /***/:auto;
+}
+
+h1{
+  font-size: 20px;
 }
