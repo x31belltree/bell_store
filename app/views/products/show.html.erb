@@ -1,5 +1,10 @@
 <p>
-  <%= image_tag @product.image.to_s %>
+  
+  <% if @product.image? %>
+    <%= image_tag @product.image.to_s %>
+  <% else %>
+    <image src="/assets/default.png" %>
+  <% end %>
 </p>
 
 <h5>

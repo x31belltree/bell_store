@@ -3,7 +3,11 @@
   <% @products.each do |product| %>
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-              <%= image_tag product.image.to_s  %>
+          <% if product.image? %>
+            <%= image_tag product.image.to_s  %>
+          <% else %>
+            <image src="/assets/default.png" %>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= product.name %></h5>
             <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
