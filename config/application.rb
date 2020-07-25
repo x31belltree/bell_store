@@ -15,6 +15,15 @@ module BellStore
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.to_prepare do
+      Devise::SessionsController.layout "devise"
+      Devise::RegistrationsController.layout "devise"
+      Devise::ConfirmationsController.layout "devise"
+      Devise::UnlocksController.layout "devise"
+      Devise::PasswordsController.layout "devise"
+      HomeController.layout "home"
+    end
+    
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
