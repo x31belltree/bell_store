@@ -81,3 +81,6 @@ gem 'devise-i18n-views'
 gem 'carrierwave'
 
 gem 'dotenv-rails'
+
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
