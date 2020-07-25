@@ -19,7 +19,7 @@
         <td><%= product.detail %></td>
         <td><%= product.price %></td>
         <td><%= product.category %></td>
-        <td><%= product.image %></td>
+        <td><%= image_tag product.image.to_s %></td>
         <td><%= product.stock %></td>
         <td><%= link_to '詳細', product %></td>
         <td><%= link_to '編集', edit_product_path(product) %></td>

@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_041323) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.text "address"
-    t.boolean "admin", default: false
+    t.boolean "admin", default: false, null: false
     t.string "uid"
     t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
