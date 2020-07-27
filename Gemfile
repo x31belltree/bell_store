@@ -84,3 +84,7 @@ gem 'dotenv-rails'
 
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
+
+#検索とページネーション
+gem 'kaminari'
+gem 'ransack'
