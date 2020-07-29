@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :set_product
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews
@@ -14,7 +15,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = Review.new
+    @review = @product.reviews.new
   end
 
   # GET /reviews/1/edit
@@ -63,8 +64,14 @@ class ReviewsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    
+    def set_product
+      @product = Product.find_by(id: params[:product_id])
+      redirect_to(product_url, alert: "ERROR!!") if @product.blank?
+    end
+    
     def set_review
-      @review = Review.find(params[:id])
+      @review = @product.reviews.find_by(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
