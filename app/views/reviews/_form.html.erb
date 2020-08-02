@@ -10,6 +10,23 @@
       </ul>
     </div>
   <% end %>
+  <!--星評価-->
+  <div class="field" id="star">
+    <%= form.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= form.hidden_field :rate, id: :review_star %>
+  </div>
+   <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[rate]',
+    half: true,
+  });
+  </script>
+<!--星評価-->
 
   <div class="field">
     <%= form.label :name %>
@@ -20,10 +37,16 @@
     <%= form.label :comment %>
     <%= form.text_area :comment %>
   </div>
-
   <%= form.hidden_field :user_id, value: current_user.id %>
+  
+ 
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+
+
+  

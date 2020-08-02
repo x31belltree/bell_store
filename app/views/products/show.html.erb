@@ -30,7 +30,9 @@
   <strong>在庫数:</strong>
   <%= @product.stock %>
 </p>
-<%= link_to 'レビューを投稿', new_product_review_path(@product) %>
+<%= link_to '商品情報を編集', edit_product_path(@product) %> |
 
-<%= link_to '編集', edit_product_path(@product) %> |
+<%= render 'reviews/index', product: @product %>
+
+
 <%= link_to '商品一覧へ戻る', products_path %>
