@@ -9,8 +9,8 @@
 </table>
 <div class="row">
   <% @products.each do |product| %>
-    <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
+    <div class="col-md-3">
+        <div class="card mb-3 shadow-sm">
           <% if product.image? %>
             <%= image_tag product.image.to_s  %>
           <% else %>
