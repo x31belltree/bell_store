@@ -1,5 +1,6 @@
 <h1>レビュー</h1>
-<table>
+<div class="table-responsive-sm">
+<table class="table table-striped table-sm">
   <thead>
     <tr>
       <th>評価</th>
@@ -33,12 +34,13 @@
         <td><%= review.name %></td>
         <td><%= review.comment %></td>
         <td><%= User.find_by(id: review.user_id).name %></td>
-        <td><%= link_to '詳細', product_review_path(@product) %></td>
-        <td><%= link_to '編集', edit_product_review_path(@product) %></td>
+        <td><%= link_to '詳細', product_review_path(@product,review) %></td>
+        <td><%= link_to '編集', edit_product_review_path(@product,review) %></td>
         <td><%= link_to '削除', product_review_path(@product,review), method: :delete, data: { confirm: '本葉に削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 <br>
 <%= link_to 'レビューを投稿', new_product_review_path(@product) %>
