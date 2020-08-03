@@ -3,13 +3,11 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews
-  # GET /reviews.json
   def index
     @reviews = @product.reviews.order(updated_at: "DESC")
   end
 
   # GET /reviews/1
-  # GET /reviews/1.json
   def show
   end
 
@@ -23,43 +21,29 @@ class ReviewsController < ApplicationController
   end
 
   # POST /reviews
-  # POST /reviews.json
   def create
     @review = @product.reviews.new(review_params)
 
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @product, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @review.save
+      redirect_to @product, notice: 'Review was successfully created.' 
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /reviews/1
-  # PATCH/PUT /reviews/1.json
   def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to @product, notice: 'Review was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @review.update(review_params)
+      redirect_to @product, notice: 'Review was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /reviews/1
-  # DELETE /reviews/1.json
   def destroy
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to product_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to product_url, notice: 'Review was successfully destroyed.'
   end
 
   private
@@ -71,7 +55,7 @@ class ReviewsController < ApplicationController
     end
     
     def set_review
-      @review = @product.reviews.find_by(params[:id])
+      @review = @product.reviews.find_by(id: params[:id])
     end
 
     # Only allow a list of trusted parameters through.

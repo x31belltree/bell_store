@@ -30,5 +30,5 @@
   <%= User.find_by(id: @review.user_id).name %>
 </p>
 
-<%= link_to '編集', edit_product_review_path(@review) %> |
+<%= link_to '編集', edit_product_review_path(@product,@review) %> |
 <%= link_to '戻る', product_path(@product) %>
