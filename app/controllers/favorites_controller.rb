@@ -1,4 +1,4 @@
-class FavoriteController < ApplicationController
+class FavoritesController < ApplicationController
   def create
     favorite = current_user.favorites.build(product_id: params[:product_id])
     favorite.save!
