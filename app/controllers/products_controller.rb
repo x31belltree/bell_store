@@ -45,6 +45,10 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to products_url, notice: 'Product was successfully destroyed.'
   end
+  
+  def bookmarks
+    @products = current_user.favorite_products.includes(:user).recent
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
