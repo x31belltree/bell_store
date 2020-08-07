@@ -46,8 +46,8 @@ class ProductsController < ApplicationController
     redirect_to products_url, notice: 'Product was successfully destroyed.'
   end
   
-  def bookmarks
-    @products = current_user.favorite_products.includes(:user).recent
+  def favorites
+    @products = current_user.favorite_products
   end
 
   private

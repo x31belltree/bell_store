@@ -9,4 +9,10 @@ class FavoritesController < ApplicationController
     current_user.favorites.find_by(product_id: params[:product_id]).destroy!
     redirect_to products_path, success: t('.flash.not_favorite')
   end
+  
+  private
+  # Only allow a list of trusted parameters through.
+  def favorite_params
+    params.require(:favorite).permit(:product, :user)
+  end
 end

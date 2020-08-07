@@ -107,8 +107,6 @@ GEM
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
-    font-awesome-rails (4.7.0.5)
-      railties (>= 3.2, < 6.1)
     font-awesome-sass (5.13.0)
       sassc (>= 1.11)
     globalid (0.4.2)
@@ -303,7 +301,6 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   dotenv-rails
-  font-awesome-rails
   font-awesome-sass
   jquery-rails
   kaminari
