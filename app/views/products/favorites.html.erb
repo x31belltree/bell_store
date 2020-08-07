@@ -1,13 +1,6 @@
-<h1>商品一覧</h1>
-<%= link_to 'お気に入り一覧', favorites_products_path %>
-<%= render 'search_form', url: products_path, q: @q_product %>
+<h1>お気に入り一覧</h1>
+<%= link_to '商品一覧へ戻る', products_path %>
 <% if @products.any? %>
-<table class="w-25 p-3ra">
-  <tr>
-    <th><%= sort_link(@q_product, :name, "商品名順") %></th>
-    <th><%= sort_link(@q_product, :price, "価格順") %></th>
-  </tr>
-</table>
 <div class="row">
   <% @products.each do |product| %>
     <div class="col-md-3">
@@ -40,8 +33,6 @@
   <% end %>
 </div>
 <% else %>
-  <h1><%= '検索結果がありません。' %></h1>
+  <h1><%= 'お気に入りがありません。' %></h1>
 <% end %>
 <%= paginate @products %>
-<br>
-<%= link_to '新規登録', new_product_path %>

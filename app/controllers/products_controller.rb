@@ -7,6 +7,11 @@ class ProductsController < ApplicationController
     @products = @q_product.result.page(params[:page])
   end
 
+  def favorites
+    @q_product = current_user.fav_products.ransack(params[:q])
+    @products = @q_product.result.page(params[:page])
+  end
+
   # GET /products/1
   def show
   end
@@ -44,10 +49,6 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     redirect_to products_url, notice: 'Product was successfully destroyed.'
-  end
-  
-  def favorites
-    @products = current_user.favorite_products
   end
 
   private
