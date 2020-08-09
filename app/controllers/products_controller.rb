@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :favorites]
+  before_action :if_not_admin, only: [:new, :edit, :update, :destroy]
 
   # GET /products
   def index
@@ -54,6 +56,9 @@ class ProductsController < ApplicationController
   end
 
   private
+    def if_not_admin
+      redirect_to root_path unless current_user.admin?
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find_by(params[:id])

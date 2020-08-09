@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_product
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews
