@@ -88,3 +88,6 @@ gem 'font-awesome-sass'
 #検索とページネーション
 gem 'kaminari'
 gem 'ransack'
+
+#多層カテゴリ
+gem 'ancestry'
