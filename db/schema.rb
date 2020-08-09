@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_090951) do
+ActiveRecord::Schema.define(version: 2020_08_09_051816) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["name"], name: "index_categories_on_name"
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -22,16 +31,8 @@ ActiveRecord::Schema.define(version: 2020_08_04_090951) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.text "detail"
-    t.integer "price"
-    t.string "category"
-    t.string "image"
-    t.integer "stock"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "products" because of following StandardError
+#   Unknown type 'reference' for column 'category'
 
   create_table "reviews", force: :cascade do |t|
     t.string "name"

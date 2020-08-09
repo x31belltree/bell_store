@@ -19,10 +19,12 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   # GET /products/1/edit
   def edit
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   # POST /products
