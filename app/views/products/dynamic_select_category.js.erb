@@ -1,1 +1,2 @@
 $('#product_category_ids').html('<%= j(options_for_select(@category.children.pluck(:name, :id))) %>');
+$('#children_category_ids').html('<%= j(options_for_select(@children_category.children.pluck(:name, :id))) %>');
