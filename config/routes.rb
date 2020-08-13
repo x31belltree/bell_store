@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get :dynamic_select_category, to: 'products#dynamic_select_category'
   resources :products, shallow: true do
     resource :favorites, only: %i[create destroy]
     get :favorites, on: :collection
