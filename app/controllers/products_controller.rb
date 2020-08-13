@@ -56,7 +56,6 @@ class ProductsController < ApplicationController
   
   def dynamic_select_category
     @category = Category.find(params[:category_id])
-    @children_category = @category.children.find(params[:category_id])
   end
 
   private
