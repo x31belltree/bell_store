@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :favorites]
   before_action :if_not_admin, only: [:new, :edit, :update, :destroy]
-  before_action :set_categories, only: [:edit, :new]
+  before_action :set_categories, only: [:edit, :new, :index]
 
   # GET /products
   def index
@@ -63,6 +63,7 @@ class ProductsController < ApplicationController
   def set_categories
     @parent_categories = Category.roots
     @default_child_categories = @parent_categories.first.children
+    @default_grandchild_categories = @default_child_categories.first.children
   end
   
   def if_not_admin

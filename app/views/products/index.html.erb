@@ -1,7 +1,7 @@
 <h1>商品一覧</h1>
 <%= link_to 'お気に入り一覧', favorites_products_path %>
 <%= render 'search_form', url: products_path, q: @q_product %>
-<% @parents.each do |parent| %>
+<% @parent_categories.each do |parent| %>
 <%= parent.name %>
 <% end %>
 
