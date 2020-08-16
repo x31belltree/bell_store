@@ -19,4 +19,5 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :favorites
   has_many :fav_products, through: :favorites, source: :product
+  has_many :carts
 end
