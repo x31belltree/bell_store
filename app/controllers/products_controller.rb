@@ -17,6 +17,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
+    @product = Product.find(params[:id])
+    @cart = @product.cart_items.build
   end
 
   # GET /products/new

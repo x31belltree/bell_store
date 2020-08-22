@@ -3,9 +3,9 @@
 one:
   quantity: 1
   product: one
-  cart: one
+  user: one
 
 two:
   quantity: 1
   product: two
-  cart: two
+  user: two
