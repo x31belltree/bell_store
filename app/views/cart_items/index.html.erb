@@ -1,14 +1,11 @@
 <div class="col-lg-10 offset-lg-1 space">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4">
-        <h2>
-          <span style="display: inline-block;">ショッピング</span>
-          <span style="display: inline-block;">カート</span>
-        </h2>
-      </div>
+    <h1>ショッピングカート</h1>
+    <% if @cart_items.any? %>
+    
+    <div class="float-right mb-3">
+      <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: 'btn btn-danger' %>
     </div>
-
 
 <table class="table table-bordered">
   <thead class="thead-light">
@@ -49,8 +46,16 @@
   </tbody>
 </table>
 
-<h1>合計金額：<%= sum_all %>円</h1>
+<div class="float-right">
+  <h1>合計金額：<%= sum_all %>円</h1>
+  <%= link_to "レジへ進む", products_path, class: "btn btn-warning float-right mb-3" %>
+  <br>
+  <%= link_to '商品一覧へ戻る', products_path, class: "float-right" %>
+</div>
+<% else %>
+  <h2><%= 'カートの中身は空です。' %></h2>
+<% end %>
 
-<%= link_to "レジへ進む", products_path, class: "btn btn-danger" %>
-<%= link_to '商品一覧へ戻る', products_path %>
 
+  </div>
+</div>
