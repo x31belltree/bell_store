@@ -13,21 +13,32 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-     <%  if user_signed_in?  %>
+    <%  if user_signed_in?  %>
+       <li class="nav-item">
+        <%= link_to favorites_products_path, class: "nav-link" do %>
+        <span class="fas fa-star"></span>お気に入り
+        <% end %>
+       </li>
        <li class="nav-item">
          <%= link_to  cart_items_path, class: "nav-link" do %>
-         ショッピングカート<span class="fas fa-shopping-cart"></span>
+         <span class="fas fa-shopping-cart"></span>ショッピングカート
          <% end %>
-         </li>
-         <li class="nav-item">
-         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
-       </li>
-     <% else %>
-       <li class="nav-item">
-         <%= link_to "サインアップ", new_user_registration_path, class: "nav-link" %>
        </li>
        <li class="nav-item">
-         <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+         <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+         <span class="fas fa-sign-out-alt"></span>ログアウト
+         <% end %>
+       </li>
+    <% else %>
+       <li class="nav-item">
+         <%= link_to new_user_registration_path, class: "nav-link" do %>
+         <span class="fas fa-user-plus"></span>登録する
+         <% end %>
+       </li>
+       <li class="nav-item">
+         <%= link_to new_user_session_path, class: "nav-link" do %>
+         <span class="fas fa-sign-in-alt"></span>ログイン
+         <% end %>
        </li>
      <% end %>
     </ul>
