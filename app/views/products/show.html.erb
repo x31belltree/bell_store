@@ -25,11 +25,11 @@
   <strong>在庫数:</strong>
   <%= @product.stock %>
 </p>
-<% unless current_user.admin? %>
-<% else %>
-<%= link_to '商品情報を編集', edit_product_path(@product) %> 
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <%= link_to '商品情報を編集', edit_product_path(@product) %> 
+  <% end %>
 <% end %>
-
 
 <%= form_with(model: [@product, @cart], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
 <%= f.label :個数 %>
@@ -75,11 +75,12 @@
         <td><%= review.comment %></td>
         <td><%= User.find_by(id: review.user_id).name %></td>
         <td><%= link_to '詳細', product_review_path(@product,review) %></td>
-        <% unless current_user.admin? %>
-        <% else %>
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
         <td><%= link_to '編集', edit_product_review_path(@product,review) %></td>
         <td><%= link_to '削除', product_review_path(@product,review), method: :delete, data: { confirm: '本葉に削除しますか?' } %></td>
         <% end %>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
