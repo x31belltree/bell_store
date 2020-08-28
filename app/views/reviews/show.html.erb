@@ -29,6 +29,8 @@
   <strong>投稿者:</strong>
   <%= User.find_by(id: @review.user_id).name %>
 </p>
-
+<% unless current_user.admin? %>
+<% else %>
 <%= link_to '編集', edit_product_review_path(@product,@review) %> |
+<% end %>
 <%= link_to '戻る', product_path(@product) %>

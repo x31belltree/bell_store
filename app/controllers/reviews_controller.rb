@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_product
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :if_not_admin, only: [:edit, :update, :destroy]
 
   # GET /reviews
   def index
@@ -57,6 +58,10 @@ class ReviewsController < ApplicationController
     
     def set_review
       @review = @product.reviews.find_by(id: params[:id])
+    end
+    
+    def if_not_admin
+      redirect_to root_path unless current_user.admin?
     end
 
     # Only allow a list of trusted parameters through.
