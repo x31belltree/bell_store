@@ -76,10 +76,13 @@
         <td><%= User.find_by(id: review.user_id).name %></td>
         <td><%= link_to '詳細', product_review_path(@product,review) %></td>
       <% if user_signed_in? %>
-        <% if current_user.admin? %>
+      <% if current_user.admin? %>
+      <td><%= link_to '編集', edit_product_review_path(@product,review) %></td>
+        <td><%= link_to '削除', product_review_path(@product,review), method: :delete, data: { confirm: '本葉に削除しますか?' } %></td>
+        <% elsif current_user.id == review.user_id  %>
         <td><%= link_to '編集', edit_product_review_path(@product,review) %></td>
         <td><%= link_to '削除', product_review_path(@product,review), method: :delete, data: { confirm: '本葉に削除しますか?' } %></td>
-        <% end %>
+      <% end %>
       <% end %>
       </tr>
     <% end %>
