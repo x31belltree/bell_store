@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   before_action :if_not_admin, only: [:new, :edit, :update, :destroy]
   before_action :set_categories, only: [:edit, :new, :index]
 
-  # GET /products
   def index
     @q_product = Product.ransack(params[:q])
     @products = @q_product.result.page(params[:page])
@@ -15,22 +14,18 @@ class ProductsController < ApplicationController
     @products = @q_product.result.page(params[:page])
   end
 
-  # GET /products/1
   def show
     @product = Product.find(params[:id])
     @cart = @product.cart_items.build
   end
 
-  # GET /products/new
   def new
     @product = Product.new
   end
 
-  # GET /products/1/edit
   def edit
   end
 
-  # POST /products
   def create
     @product = Product.new(product_params)
 
@@ -41,7 +36,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
   def update
       if @product.update(product_params)
         redirect_to @product, notice: 'Product was successfully updated.'

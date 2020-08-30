@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    get 'products/edit'
+    get 'products/index'
+    get 'products/new'
+    get 'products/show'
+  end
+  devise_for :admins
+  namespace :admins do
+    get 'homes/top' => 'homes#top', as:'top'
+    resources :products, only: [:index, :create, :new, :edit, :show, :update]
+  end
+  
   get :dynamic_select_category, to: 'products#dynamic_select_category'
   resources :products, shallow: true do
     resource :favorites, only: %i[create destroy]
