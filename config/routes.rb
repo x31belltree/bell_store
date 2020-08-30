@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'products/edit'
-    get 'products/index'
-    get 'products/new'
-    get 'products/show'
-  end
   devise_for :admins
   namespace :admins do
     get 'homes/top' => 'homes#top', as:'top'

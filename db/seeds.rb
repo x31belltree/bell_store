@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-users= [
-{ name: '管理者', email: 'admin@test.com', password: '123456',address: '東京都品川区x-x-x',admin: 'true' },
+users = [
+{ name: '旧管理者', email: 'admin@test.com', password: '123456',address: '東京都品川区x-x-x',admin: 'true' },
 { name: 'テストユーザ1', email: 'test@test.com', password: '123456',address: '東京都品川区x-x-x',admin: 'false'  },
 ]
+
 users.each do |record|
  User.create!(record) unless User.find_by(email: record[:email])
 end
