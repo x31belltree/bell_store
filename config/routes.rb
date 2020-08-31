@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins
   namespace :admins do
-    get 'homes/top' => 'homes#top', as:'top'
     resources :products, only: [:index, :create, :new, :edit, :show, :update]
   end
   

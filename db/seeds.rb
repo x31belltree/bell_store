@@ -6,9 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.create!(
+  id: 1,
+  email: 'admin@user',
+  password: 'adminuser',
+  password_confirmation: 'adminuser'
+  )
+
 users = [
-{ name: '旧管理者', email: 'admin@test.com', password: '123456',address: '東京都品川区x-x-x',admin: 'true' },
-{ name: 'テストユーザ1', email: 'test@test.com', password: '123456',address: '東京都品川区x-x-x',admin: 'false'  },
+{ name: '鈴木', email: 'bell@test.com', password: '123456',address: '東京都品川区x-x-x' },
+{ name: '佐藤', email: 'sugar@test.com', password: '123456',address: '東京都目黒区区x-x-x'}
 ]
 
 users.each do |record|

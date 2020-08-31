@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
     def index
-        redirect_to products_path if user_signed_in?
+        if admin_signed_in?
+            redirect_to admins_products_path 
+        elsif user_signed_in?
+            redirect_to products_path
+        end
     end
 end

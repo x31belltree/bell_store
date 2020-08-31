@@ -26,6 +26,14 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+      admin:
+        current_password: "現在のパスワード"
+        name: "氏名"
+        email: "メールアドレス"
+        address: "住所"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "次回から自動的にログイン"
     models:
       user: "ユーザ"
   devise:
