@@ -21,11 +21,6 @@
   <%= @product.price %>円
 </p>
 
-<p>
-  <strong>在庫数:</strong>
-  <%= @product.stock %>
-</p>
-
 <%= form_with(model: [@product, @cart], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
 <%= f.label :個数 %>
 <%= f.number_field :quantity, value: 1 ,min:1, max:99 %>

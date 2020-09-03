@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :products, only: [:index, :create, :new, :edit, :show, :update]
   end
+  get :dynamic_select_category, to: 'admins/products#dynamic_select_category'
   
-  get :dynamic_select_category, to: 'products#dynamic_select_category'
   resources :products, shallow: true do
     resource :favorites, only: %i[create destroy]
     get :favorites, on: :collection

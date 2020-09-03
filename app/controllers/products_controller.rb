@@ -19,8 +19,7 @@ class ProductsController < ApplicationController
   
   private
   def set_categories
-    @parent_categories = Category.roots
-    @default_child_categories = @parent_categories.first.children
-    @default_grandchild_categories = @default_child_categories.first.children
+   @parent_categories = Category.roots
+   @default_child_categories = @parent_categories.first.children
   end
 end

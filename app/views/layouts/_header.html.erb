@@ -14,37 +14,46 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
     <% if admin_signed_in? %>
-          <div class="admin-message">管理者としてログインしています</div>
-          <li class="nav-item"><%= link_to '商品一覧', admins_products_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
+        <div class="py-2 text-danger"><strong>管理者</strong>としてログインしています</div>
+        <li class="nav-item"><%= link_to '商品一覧', admins_products_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
     <%  elsif user_signed_in?  %>
-       <li class="nav-item">
-        <%= link_to favorites_products_path, class: "nav-link" do %>
-        <span class="fas fa-star"></span>お気に入り
+        <div class="py-2">ようこそ、<strong><%= current_user.name  %></strong>さん</div>
+        <li class="nav-item">
+            <%= link_to products_path, class: 'nav-link' do %>
+            <span class="fas fa-cubes"></span>商品一覧
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to favorites_products_path, class: "nav-link" do %>
+            <span class="fas fa-star"></span>お気に入り
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to  cart_items_path, class: "nav-link" do %>
+            <span class="fas fa-shopping-cart"></span>ショッピングカート
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <span class="fas fa-sign-out-alt"></span>ログアウト
+            <% end %>
+        </li>
+    <% else %>
+        <li class="nav-item"><%= link_to products_path, class: 'nav-link' do %>
+        <span class="fas fa-cubes"></span>商品一覧
+        <% end %>
+        <li class="nav-item">
+        <%= link_to new_user_registration_path, class: "nav-link" do %>
+        <span class="fas fa-user-plus"></span>登録する
+        <% end %>
+        </li>
+        <li class="nav-item">
+        <%= link_to new_user_session_path, class: "nav-link" do %>
+        <span class="fas fa-sign-in-alt"></span>ログイン
         <% end %>
        </li>
-       <li class="nav-item">
-         <%= link_to  cart_items_path, class: "nav-link" do %>
-         <span class="fas fa-shopping-cart"></span>ショッピングカート
-         <% end %>
-       </li>
-       <li class="nav-item">
-         <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-         <span class="fas fa-sign-out-alt"></span>ログアウト
-         <% end %>
-       </li>
-    <% else %>
-       <li class="nav-item">
-         <%= link_to new_user_registration_path, class: "nav-link" do %>
-         <span class="fas fa-user-plus"></span>登録する
-         <% end %>
-       </li>
-       <li class="nav-item">
-         <%= link_to new_user_session_path, class: "nav-link" do %>
-         <span class="fas fa-sign-in-alt"></span>ログイン
-         <% end %>
-       </li>
-     <% end %>
+    <% end %>
     </ul>
   </div>
 </header>
