@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_115110) do
+ActiveRecord::Schema.define(version: 2020_09_05_035629) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 2020_08_31_115110) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "product_categories", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_product_categories_on_category_id"
+    t.index ["product_id"], name: "index_product_categories_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "detail"
@@ -61,8 +70,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_115110) do
     t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "reviews", force: :cascade do |t|

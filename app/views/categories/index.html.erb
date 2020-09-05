@@ -1,3 +1,11 @@
+<h1>カテゴリ一覧</h1>
+<ul>
 <% @parents.each do |parent| %>
-<p><%= parent.name %></p>
+ <li><%= link_to "#{parent.name}", category_path(parent) %></li>
+ <ul>
+ <%parent.children.each do |child| %>
+ <li><%= link_to "#{child.name}", category_path(child) %></li>
+ <% end %>
+ </ul>
 <% end %>
+</ul>

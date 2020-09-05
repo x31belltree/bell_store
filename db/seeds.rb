@@ -33,5 +33,5 @@ baby_kids = Category.create(name: "ベビー・キッズ")
 baby_kids.children.create([{name: "トップス"},{name: "アウター"},{name: "パンツ"},{name: "スカート"},{name: "ワンピース"},{name: "ベビードレス"},{name: "おくるみ"},{name: "下着/肌着"},{name: "パジャマ"},{name: "ロンパース"},{name: "その他"}])
 
 15.times do |i|
- Product.create!(name: "商品サンプル#{format("%02d",1+i)}",detail: "商品サンプル#{format("%02d",1+i)}の説明です" ,price: "#{i*100}" ,stock: "#{i+1}" )
+ Product.create!(name: "商品サンプル#{format("%02d",i+1)}",detail: "商品サンプル#{format("%02d",i+1)}の説明です" ,price: "#{i+1*100}" ,stock: "#{i+1}" )
 end

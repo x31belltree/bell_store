@@ -14,16 +14,12 @@ class Admins::ProductsController < ApplicationController
   def new
     @product = Product.new
   end
-
-  def show
-    @product = Product.find(params[:id])
-  end
   
   def create
     @product = Product.new(product_params)
     
     if @product.save
-      redirect_to admins_product_path(@product), notice: 'Product was successfully created.'
+      redirect_to admins_products_path, notice: 'Product was successfully created.'
     else
       render :new
     end
@@ -31,7 +27,7 @@ class Admins::ProductsController < ApplicationController
   
   def update
     if @product.update(product_params)
-      redirect_to admins_product_path(@product), notice: 'Product was successfully updated.'
+      redirect_to admins_products_path, notice: 'Product was successfully updated.'
     else
       render :edit
     end
@@ -57,7 +53,7 @@ class Admins::ProductsController < ApplicationController
   end
   
   def product_params
-    params.require(:product).permit(:name, :detail, :price, :category, :image, :stock, :category_id)
+    params.require(:product).permit(:name, :detail, :price, :category, :image, :stock )
   end
 end
 
