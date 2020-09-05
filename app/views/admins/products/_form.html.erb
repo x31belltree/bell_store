@@ -36,8 +36,9 @@
     <%= form.number_field :stock %>
   </div>
   
+  <%= form.label :category %>
   <div class="actions">
-    <select id="parent_category" >
+    <select id="parent_category">
       <% @parent_categories.each do |c| %>
         <option value="<%= c.id %>"><%= c.name %></option>
       <% end %>
