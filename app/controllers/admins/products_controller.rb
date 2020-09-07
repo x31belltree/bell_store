@@ -1,6 +1,6 @@
 class Admins::ProductsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_categories, only: %w[edit new]
+  before_action :set_categories, only: [:edit, :new]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def edit
@@ -40,8 +40,7 @@ class Admins::ProductsController < ApplicationController
   
   private
   def set_categories
-    @parent_categories = Category.roots
-    @default_child_categories = @parent_categories.first.children
+    @categories = Category.all
   end
 
   def set_product

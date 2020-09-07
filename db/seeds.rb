@@ -15,22 +15,14 @@ Admin.create!(
 
 users = [
 { name: '鈴木', email: 'bell@test.com', password: '123456',address: '東京都品川区x-x-x' },
-{ name: '佐藤', email: 'sugar@test.com', password: '123456',address: '東京都目黒区区x-x-x'}
+{ name: '佐藤', email: 'sugar@test.com', password: '123456',address: '東京都目黒区x-x-x'}
 ]
 
 users.each do |record|
  User.create!(record) unless User.find_by(email: record[:email])
 end
 
-lady = Category.create(name: "レディース")
-lady.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"},{name: "Tシャツ/カットソー(七分/長袖)"},{name: "シャツ/ブラウス(半袖/袖なし)"},{name: "シャツ/ブラウス(七分/長袖)"},{name: "ポロシャツ"},{name: "キャミソール"},{name: "タンクトップ"},{name: "ホルターネック"},{name: "ニット/セーター"},{name: "チュニック"},{name: "カーディガン/ボレロ"},{name: "アンサンブル"},{name: "ベスト/ジレ"},{name: "パーカー"},{name: "トレーナー/スウェット"},{name: "ベアトップ/チューブトップ"},{name: "ジャージ"},{name: "その他"}])
-
-men = Category.create(name: "メンズ")
-men.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"},{name: "Tシャツ/カットソー(七分/長袖)"},{name: "シャツ"},{name: "ポロシャツ"},{name: "タンクトップ"},{name: "ニット/セーター"},{name: "パーカー"},{name: "カーディガン"},{name: "スウェット"},{name: "ジャージ"},{name: "ベスト"},{name: "その他"}])
-
-# ベビー・キッズ
-baby_kids = Category.create(name: "ベビー・キッズ")
-baby_kids.children.create([{name: "トップス"},{name: "アウター"},{name: "パンツ"},{name: "スカート"},{name: "ワンピース"},{name: "ベビードレス"},{name: "おくるみ"},{name: "下着/肌着"},{name: "パジャマ"},{name: "ロンパース"},{name: "その他"}])
+Category.create([{name: "レディース/Tシャツ"},{name: "レディース/ブラウス"},{name: "レディース/ポロシャツ"},{name: "メンズ/Tシャツ"},{name: "メンズ/シャツ"},{name: "メンズ/ポロシャツ"},{name: "メンズ/タンクトップ"},{name: "ニット/セーター"},{name: "その他"}])
 
 15.times do |i|
  Product.create!(name: "商品サンプル#{format("%02d",i+1)}",detail: "商品サンプル#{format("%02d",i+1)}の説明です" ,price: "#{i+1*100}" ,stock: "#{i+1}" )

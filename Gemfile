@@ -26,7 +26,6 @@ gem 'bootstrap-social-rails'
 gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'ransack'
-gem 'ancestry'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

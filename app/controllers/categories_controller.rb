@@ -1,11 +1,11 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: :show
   def index
-    @parents = Category.roots
+    @categories = Category.all
   end
   
   def show
-    @products = @category.set_products
+    @products = @category.products
   end
   
   private

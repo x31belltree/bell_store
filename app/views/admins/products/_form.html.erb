@@ -36,6 +36,7 @@
     <%= form.number_field :stock %>
   </div>
   
+  <div class="field">
     <%= form.label :category %>
     <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
       <%= category.label do %>
@@ -43,6 +44,7 @@
         <%= category.text %>
       <% end %>
     <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
