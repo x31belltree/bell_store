@@ -49,11 +49,11 @@ class Admins::ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find_by(params[:id])
+    @product = Product.find(params[:id])
   end
   
   def product_params
-    params.require(:product).permit(:name, :detail, :price, :category, :image, :stock )
+    params.require(:product).permit(:name, :detail, :price,  :image, :stock , category_ids: [])
   end
 end
 

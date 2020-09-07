@@ -1,11 +1,5 @@
 <h1><%= "#{@category.name}の商品一覧" %></h1>
     <% if @products.any? %>
-<table class="w-25 p-3ra">
-  <tr>
-    <th><%= sort_link(@q_product, :name, "商品名順") %></th>
-    <th><%= sort_link(@q_product, :price, "価格順") %></th>
-  </tr>
-</table>
 <div class="row">
   <% @products.each do |product| %>
     <div class="col-md-3">
