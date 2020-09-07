@@ -48,15 +48,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-
-<script type="text/javascript">
-$(function() {
-  $('#parent_category').change(function() {
-    $.ajax({
-      url: "<%= dynamic_select_category_path %>",
-      type: 'GET',
-      data: { category_id: $('#parent_category').has('option:selected').val() }
-    });
-  });
-});
-</script>

@@ -38,10 +38,6 @@ class Admins::ProductsController < ApplicationController
     redirect_to admins_products_url, notice: 'Product was successfully destroyed.'
   end
   
-  def dynamic_select_category
-    @category = Category.find(params[:category_id])
-  end
-  
   private
   def set_categories
     @parent_categories = Category.roots
