@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'orders/confirm'
+  get 'orders/index'
+  get 'orders/new'
+  get 'orders/show'
+  get 'orders/thanks'
+  get 'order_items/index'
   resources :categories, only: [:index, :show]
   devise_for :admins
   namespace :admins do
@@ -17,8 +23,10 @@ Rails.application.routes.draw do
         delete 'destroy_all'
     end
   end
+  resources :orders, only: [:new, :index, :create, :show]
+  post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
+  get 'orders/thanks' => 'orders#thanks', as: 'order_thanks'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "home#index"
 end

@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:favorites]
-  before_action :set_categories, only: [:index]
 
   def index
     @q_product = Product.ransack(params[:q])
@@ -15,11 +14,5 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @cart = @product.cart_items.build
-  end
-  
-  private
-  def set_categories
-   @parent_categories = Category.roots
-   @default_child_categories = @parent_categories.first.children
   end
 end
