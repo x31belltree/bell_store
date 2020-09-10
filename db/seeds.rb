@@ -14,8 +14,8 @@ Admin.create!(
   )
 
 users = [
-{ name: '鈴木', email: 'bell@test.com', password: '123456',address: '東京都品川区x-x-x' },
-{ name: '佐藤', email: 'sugar@test.com', password: '123456',address: '東京都目黒区x-x-x'}
+{ name: '鈴木テス男', email: 'bell@test.com', password: '123456',address: '東京都品川区x-x-x' },
+{ name: '佐藤テス子', email: 'sugar@test.com', password: '123456',address: '東京都目黒区x-x-x'}
 ]
 
 users.each do |record|
