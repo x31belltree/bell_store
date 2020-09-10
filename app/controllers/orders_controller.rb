@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   end
   
   def create
-    if current_customer.cart_items.exists?
+    if current_user.cart_items.exists?
       @order = Order.new(order_params)
       @order.user_id = current_user.id
 
@@ -15,8 +15,8 @@ class OrdersController < ApplicationController
       @add = params[:order][:add].to_i
       case @add
         when 1
-          @order.send_to_address = @customer.address
-          @order.addressee = full_name(@customer)
+          @order.send_to_address = @user.address
+          @order.addressee = name(@user)
         when 2
           @order.send_to_address = params[:order][:send_to_address]
           @order.addressee = params[:order][:addressee]
