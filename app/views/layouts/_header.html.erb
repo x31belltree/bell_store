@@ -35,6 +35,11 @@
             <% end %>
         </li>
         <li class="nav-item">
+            <%= link_to  orders_path(current_user), class: "nav-link" do %>
+            <span class="fas fa-history"></span>注文履歴
+            <% end %>
+        </li>
+        <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
             <span class="fas fa-sign-out-alt"></span>ログアウト
             <% end %>
