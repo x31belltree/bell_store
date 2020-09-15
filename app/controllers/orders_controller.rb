@@ -7,9 +7,8 @@ class OrdersController < ApplicationController
   end
   
   def create
-    if current_user.cart_items.exists?
+    if current_cart.line_items.exists?
       @order = Order.new(order_params)
-      @order.user_id = current_user.id
 
       # 住所のラジオボタン選択に応じて引数を調整
       @add = params[:order][:add].to_i
@@ -23,14 +22,14 @@ class OrdersController < ApplicationController
       end
       @order.save
 
-      current_user.cart_items.each do |cart_item|
+      current_cart.line_items.each do |line_item|
         order_item = @order.order_items.build
         order_item.order_id = @order.id
-        order_item.product_id = cart_item.product_id
-        order_item.quantity = cart_item.quantity
-        order_item.order_price = cart_item.product.price
+        order_item.product_id = line_item.product_id
+        order_item.quantity = line_item.quantity
+        order_item.order_price = line_item.product.price
         order_item.save
-        cart_item.destroy
+        line_item.destroy
       end
       render :thanks
     else
@@ -41,7 +40,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    if @order.user_id != current_user.id
+    if @order.user_id != current_cart.id
       redirect_back(fallback_location: root_path)
       flash[:alert] = "アクセスに失敗しました。"
     end
@@ -53,7 +52,7 @@ class OrdersController < ApplicationController
   
   def confirm
     @order = Order.new
-    @cart_items = current_user.cart_items
+    @line_items = current_cart.line_items
     @order.how_to_pay = params[:order][:how_to_pay]
     
     @add = params[:order][:add].to_i

@@ -1,19 +1,5 @@
 class LineItemsController < ApplicationController
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @line_items = LineItem.all
-  end
-
-  def show
-  end
-
-  def new
-    @line_item = LineItem.new
-  end
-
-  def edit
-  end
+  before_action :set_line_item, only: [:update, :destroy]
 
   def create
     cart = current_cart
@@ -21,7 +7,7 @@ class LineItemsController < ApplicationController
     @line_item = cart.add_item(product.id)
 
     if @line_item.save
-      redirect_to @line_item, notice: 'Line item was successfully created.'
+      redirect_to carts_path, notice: 'カートに商品を追加しました'
     else
       render :new
     end
@@ -29,7 +15,7 @@ class LineItemsController < ApplicationController
 
   def update
     if @line_item.update(line_item_params)
-      redirect_to @line_item, notice: 'Line item was successfully updated.'
+      redirect_to carts_path, notice: 'カートの商品を更新しました'
     else
       render :edit
     end
@@ -37,7 +23,7 @@ class LineItemsController < ApplicationController
 
   def destroy
     @line_item.destroy
-    redirect_to line_items_url, notice: 'Line item was successfully destroyed.'
+    redirect_to carts_path, notice: 'カートの商品を削除しました'
   end
 
   private
@@ -46,6 +32,6 @@ class LineItemsController < ApplicationController
     end
 
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      params.require(:line_item).permit(:product_id, :cart_id, :quantity)
     end
 end

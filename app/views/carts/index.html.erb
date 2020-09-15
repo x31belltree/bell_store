@@ -1,25 +1,57 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Carts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @carts.each do |cart| %>
-      <tr>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="col-lg-10 offset-lg-1 space">
+  <div class="container-fluid">
+    <h1>ショッピングカート</h1>
+    <% if @line_items.any? %>
+    
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+      </thead>
+      <tbody>
+        <% sum_all = 0 %>
+        <% @line_items.each do |line_item| %>
+        <tr>
+          <td>
+            <%= link_to product_path(line_item.product) do %>
+            <%= line_item.product.name %>
+            <% end %>
+          </td>
+          <td>
+          <%= line_item.product.price %>
+          </td>
+          <td>
+            <%= form_with model: line_item, local: true do |form| %>
+            <%= form.number_field :quantity, value: line_item.quantity, min:1, max:99  %>
+            <%= form.submit "変更", class: "btn btn-primary" %>
+            <% end %>
+          </td>
+          <td>
+            <%= sum_product = line_item.product.price.to_i * line_item.quantity %>円
+            <% sum_all += sum_product %>
+          </td>
+          <td>
+            <%= link_to "削除する", line_item_path(line_item), method: :delete, class: "btn btn-danger"%>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <div class="float-right">
+      <h1>合計金額：<%= sum_all %>円</h1>
+      <%= link_to "レジへ進む", new_order_path, class: "btn btn-warning float-right mb-3" %>
+      <br>
+      <%= link_to '商品一覧へ戻る', products_path, class: "float-right" %>
+    </div>
+    <% else %>
+      <h2><%= 'カートの中身は空です。' %></h2>
+      <%= link_to '商品一覧へ戻る', products_path %>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Cart', new_cart_path %>
+  </div>
+</div>

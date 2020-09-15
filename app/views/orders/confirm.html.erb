@@ -15,7 +15,7 @@
   </div>
 
   <% sum_all = 0 %>
-  <% @cart_items.each do |cart_item| %>
+  <% @line_items.each do |cart_item| %>
   <div class="row space-sm">
     <div class="col-lg-2">
       <%= link_to product_path(cart_item.product) do %>
