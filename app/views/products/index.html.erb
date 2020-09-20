@@ -22,23 +22,18 @@
             <% else %>
             <h5 class="card-title"><%= product.name %></h5>
             <% end %>
-            <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
             <p class="card-text">説明：<%= product.detail %></p>
             <p class="card-text">価格：<%= product.price %>円</p>
             
             <div class="d-flex justify-content-between align-items-center my-3">
               <div class="btn-group">
-                <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
                 <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to '詳細', product %></button>
               </div>
             </div>
-              <% @cart = product.cart_items.build %>
-              <%= form_with(model: [product, @cart], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
-              <%= f.label :個数 %>
-              <%= f.number_field :quantity, value: 1 ,min:1, max:99 %>
-              <%= f.hidden_field :product_id, value: product.id  %>
-              <%= f.submit "カートに入れる", class: "btn btn-danger float-right" %>
-              <% end %>
+            <%= form_with url: line_items_path(product_id: product.id), local: true  do |form| %>
+            <%= form.number_field :quantity, value: 1 ,min:1, max:99 %>
+            <%= form.submit "カートに入れる", class: "btn btn-danger float-right" %>
+            <% end %>
           </div>
         </div>
       </div>
