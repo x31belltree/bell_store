@@ -30,8 +30,13 @@
             <% end %>
         </li>
         <li class="nav-item">
-            <%= link_to  cart_items_path, class: "nav-link" do %>
+            <%= link_to  carts_path, class: "nav-link" do %>
             <span class="fas fa-shopping-cart"></span>ショッピングカート
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to  orders_path(current_user), class: "nav-link" do %>
+            <span class="fas fa-history"></span>注文履歴
             <% end %>
         </li>
         <li class="nav-item">

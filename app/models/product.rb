@@ -4,7 +4,7 @@ class Product < ApplicationRecord
     has_many :categories, through: :product_categories
     has_many :reviews
     has_many :favorites
-    has_many :cart_items
+    has_many :line_items
     has_many :user, through: :favorites
     
     def favorite_by?(user)
