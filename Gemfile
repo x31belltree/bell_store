@@ -4,7 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: :production
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -26,7 +27,6 @@ gem 'bootstrap-social-rails'
 gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'ransack'
-gem 'pg'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
