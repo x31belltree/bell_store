@@ -14,7 +14,7 @@
           <% if product.image? %>
             <%= image_tag product.image.to_s  %>
           <% else %>
-            <image src="/assets/default.png" %>
+            <%= image_tag asset_path("default.png", alt: "商品画像") %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= product.name %></h5>
