@@ -21,10 +21,7 @@
   <%= @product.price %>円
 </p>
 
-<%= form_with url: line_items_path(product_id: @product.id) do |form| %>
-<%= form.number_field :quantity, value: 1 ,min:1, max:99 %>
-<%= form.submit "カートに入れる", class: "btn btn-danger float-right" %>
-<% end %>
+<%= link_to "カートに入れる" ,line_items_path(product_id: @product.id), html_options = {method: :post} %>
 
 <h2>レビュー</h2>
 <div class="table-responsive-sm">
