@@ -1,21 +1,21 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
 
   def index
-    @orders = @user.orders
+    @orders = current_user.orders
   end
   
   def create
     if current_cart.line_items.exists?
       @order = Order.new(order_params)
+      @order.user_id = current_user.id
 
       # 住所のラジオボタン選択に応じて引数を調整
       @add = params[:order][:add].to_i
       case @add
         when 1
-          @order.send_to_address = @user.address
-          @order.addressee = name(@user)
+          @order.send_to_address = current_user.address
+          @order.addressee = name(current_user)
         when 2
           @order.send_to_address = params[:order][:send_to_address]
           @order.addressee = params[:order][:addressee]
@@ -58,8 +58,8 @@ class OrdersController < ApplicationController
     @add = params[:order][:add].to_i
     case @add
       when 1
-        @order.send_to_address = @user.address
-        @order.addressee = @user.name
+        @order.send_to_address = current_user.address
+        @order.addressee = current_user.name
       when 2
         @order.send_to_address = params[:order][:new_add][:address]
         @order.addressee = params[:order][:new_add][:addressee]
@@ -70,10 +70,6 @@ class OrdersController < ApplicationController
   end
   
   private
-  def set_user
-    @user = current_user
-  end
-
   def order_params
     params.require(:order).permit(
       :created_at, :send_to_address, :addressee, :order_status, :how_to_pay, :post_code, :deliver_fee,
