@@ -6,6 +6,7 @@ class Product < ApplicationRecord
     has_many :favorites
     has_many :line_items
     has_many :user, through: :favorites
+    has_many :order_items
     
     def favorite_by?(user)
         favorites.where(user_id: user.id).exists?
